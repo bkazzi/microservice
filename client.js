@@ -37,7 +37,7 @@ class tcpClient{
 
         this.client.on('close',()=>{
             if(this.onEnd)
-                this.onEnd.onEnd(this.options);
+                this.onEnd(this.options);
         });
 
         this.client.on('error', (err)=>{

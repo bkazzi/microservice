@@ -1,6 +1,6 @@
 'use strickt';
 
-const net = requrie('net');
+const net = require('net');
 const tcpClient = require('./client');
 
 class tcpServer {
@@ -9,7 +9,7 @@ class tcpServer {
             port:port,
             name:name,
             urls:urls
-        }
+        };
         this.merge={};
 
         this.server = net.createServer((socket) =>{
@@ -21,7 +21,7 @@ class tcpServer {
 
             socket.on('data',(data)=>{
                 var ket = socket.remoteAddress + ':' + socket.remotePort;
-                var sz = this.merge[key]?this.merge[key]+ data.toString() : data.toString();
+                var sz = this.merge[key] ? this.merge[key]+ data.toString() : data.toString();
                 var arr = sz.split('$');
                 for(var n in arr){
                     if(sz.charAt(sz.length - 1)!='$' && n == arr.length -1){
